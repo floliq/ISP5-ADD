@@ -30,39 +30,39 @@ namespace ConsoleApp1
 
 			static internal string Surname
 			{
-				get => Surname;
+				get => _Surname;
 				set
 
 				{
 					if (Regex.Match(value, "[а-яА-Я]").Success)
 					{
-						Surname = value;
+						_Surname = value;
 					}
 				}
 			}
 
 			static internal string Name
 			{
-				get => Name;
+				get => _Name;
 				set
 
 				{
 					if (Regex.Match(value, "[а-яА-Я]").Success)
 					{
-						Name = value;
+						_Name = value;
 					}
 				}
 			}
 
 			static internal string Fathername
 			{
-				get => Fathername;
+				get => _Fathername;
 				set
 
 				{
 					if (Regex.Match(value, "[а-яА-Я]").Success)
 					{
-						Fathername = value;
+						_Fathername = value;
 					}
 				}
 			}
@@ -101,7 +101,7 @@ namespace ConsoleApp1
 				}
 			}
 		}
-		public virtual string Print() => $"{Information.Surname} {Information.Name} {Information.Fathername}";
+		public virtual string Print() => $"{Id} {Information.Surname} {Information.Name} {Information.Fathername}";
 	}
 
 	class Student : Person
@@ -111,7 +111,7 @@ namespace ConsoleApp1
 		{
 			NameUniversity = nameUniversity;
 		}
-		public override string Print() => $"{Information.Surname} {Information.Name} {Information.Fathername} {NameUniversity}";
+		public override string Print() => $"{Id} {Information.Surname} {Information.Name} {Information.Fathername} {NameUniversity}";
 	}
 
 	class Speciality : Person
@@ -126,16 +126,7 @@ namespace ConsoleApp1
 			this.Group = group;
 		}
 
-		public override string Print() => $"{Information.Surname} {Information.Name} {Information.Fathername} {Faculty} {Group}";
-
-		public void AddToPrint(params string[] args)
-		{
-			Console.Write(Print());
-			foreach (var x in args)
-			{
-				Console.Write(" "+x);
-			}
-		}
+		public override string Print() => $"{Id} {Information.Surname} {Information.Name} {Information.Fathername} {Faculty} {Group}";
 	}
 
 	class Program
